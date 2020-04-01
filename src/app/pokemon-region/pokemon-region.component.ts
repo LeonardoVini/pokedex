@@ -52,7 +52,7 @@ export class PokemonRegionComponent implements OnInit {
     this.gen_infos.types.sort((a, b) => (a.name > b.name) ? 1 : -1)
   }
 
-  protected getColor(type): string {
+  public getColor(type): string {
     return this.typeColorService.getColor(type)
   }
 }

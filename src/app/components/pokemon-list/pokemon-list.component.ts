@@ -8,7 +8,7 @@ import { Pokemon } from './models/pokemon.model';
   styleUrls: ["./pokemon-list.component.scss"]
 })
 export class PokemonListComponent implements OnInit, OnChanges {
-  @Input() protected pokemons: Pokemon[];
+  @Input() public pokemons: Pokemon[];
 
   constructor() {
   }

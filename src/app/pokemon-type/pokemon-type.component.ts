@@ -13,9 +13,9 @@ import { TypeColorService } from '../services/type-color.service';
 export class PokemonTypeComponent implements OnInit {
 
   private id: number
-  protected type: PokemonType
-  protected all_types: AllTypes
-  protected pokemon_array: Array<{ name: string, url: string, id?: number }> = []
+  public type: PokemonType
+  public all_types: AllTypes
+  public pokemon_array: Array<{ name: string, url: string, id?: number }> = []
 
   constructor(
     private pokemonAPIService: PokemonAPIService,
@@ -68,7 +68,7 @@ export class PokemonTypeComponent implements OnInit {
     this.generatePokemonArray()
   }
 
-  protected getTypeColor(type): string {
+  public getTypeColor(type): string {
     return this.typeColorService.getColor(type)
   }
 

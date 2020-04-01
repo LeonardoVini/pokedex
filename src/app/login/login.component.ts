@@ -13,7 +13,7 @@ import {
   styleUrls: ["./login.component.scss"]
 })
 export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
-  @ViewChild("hero", { static: false }) protected hero: ElementRef;
+  @ViewChild("hero", { static: false }) public hero: ElementRef;
 
   private intervalID: any
 
