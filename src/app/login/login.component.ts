@@ -7,8 +7,6 @@ import {
   OnDestroy
 } from "@angular/core";
 
-import POKEMON_IMAGES from '../database/pokemon_images'
-
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
@@ -22,32 +20,27 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor() {}
 
   ngOnInit() {
-    localStorage.setItem('pokemon_id', '-1')
+
   }
 
   ngAfterViewInit(): void {
     this.intervalID = setInterval(() => {
-      let hero: string = this.changeHeroImage();
+      let pokemon_id: string = this.changeHeroImage();
 
-      this.hero.nativeElement.src = `${hero}`;
-      this.hero.nativeElement.alt = hero;
-    }, 1000);
+      this.hero.nativeElement.src = `http://assets22.pokemon.com/assets/cms2/img/pokedex/full/${pokemon_id}.png`;
+      this.hero.nativeElement.alt = `Pokemon_${pokemon_id}`;
+    }, 1500);
   }
 
   private changeHeroImage(): string {
-    let hero_id: number = +localStorage.getItem("pokemon_id");
-    let next_hero_id: number = hero_id + 1;
-    let next_hero: string;
+    let pokemon_id: number = Math.floor(Math.random() * 807) + 1
+    let pokemon_id_str: string = ''
 
-    if (next_hero_id > POKEMON_IMAGES.length - 1) {
-      next_hero = POKEMON_IMAGES[0].art_url;
-      localStorage.setItem("pokemon_id", "0");
-    } else {
-      next_hero = POKEMON_IMAGES[next_hero_id].art_url;
-      localStorage.setItem("pokemon_id", next_hero_id.toString());
-    }
+    if (pokemon_id < 10) pokemon_id_str = `00${pokemon_id}`
+    if (pokemon_id >= 10 && pokemon_id < 100) pokemon_id_str = `0${pokemon_id}`
+    if (pokemon_id >= 100) pokemon_id_str = `${pokemon_id}`
 
-    return next_hero;
+    return pokemon_id_str;
   }
 
   ngOnDestroy(): void {

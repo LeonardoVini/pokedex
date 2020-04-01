@@ -1,0 +1,54 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+div.region-container {
+  margin-top: 20px;
+}
+
+div.badges {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  padding: 10px;
+  border: 1px solid #000000;
+  gap: 5px;
+  align-items: center;
+  text-align: center;
+  background: #fff;
+  border-radius: 6px;
+  margin-top: 10px;
+
+  span {
+    border: 1px solid #000;
+    border-radius: 8px;
+    transition: opacity 0.3s;
+    font-weight: bold;
+    color: #fff;
+    font-size: 14px;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
+  }
+}
+
+div.move-container {
+  margin-top: 20px;
+}
+
+#moves {
+  color: #000;
+  transition: background 0.2s, color 0.3s;
+
+  &:hover {
+    background: #3399ff;
+    color: #fff;
+  }
+}
+
+div.pokemon-container {
+  margin-top: 20px;
+}

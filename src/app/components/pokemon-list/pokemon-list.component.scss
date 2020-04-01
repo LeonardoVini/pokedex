@@ -1,0 +1,36 @@
+div.pokemon-images {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 15px;
+  margin-top: 10px;
+
+  div.card-image {
+    background: #fff;
+    border-radius: 16px;
+    transition: transform 0.3s;
+
+    img {
+      margin-top: 5px;
+      width: 100%;
+    }
+
+    p {
+      font-weight: bold;
+      font-size: 14px;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+
+      -webkit-box-shadow: 10px 10px 39px -1px rgba(0, 0, 0, 0.68);
+      -moz-box-shadow: 10px 10px 39px -1px rgba(0, 0, 0, 0.68);
+      box-shadow: 10px 10px 39px -1px rgba(0, 0, 0, 0.68);
+    }
+  }
+}

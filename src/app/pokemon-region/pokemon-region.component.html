@@ -1,0 +1,35 @@
+<div class="content" *ngIf="gen_infos">
+  <div class="region-container">
+    <h1>
+      {{ gen_infos.main_region.name | titlecase }} Region -
+      {{ gen_infos.names[3].name }}
+    </h1>
+
+    <div class="region-container">
+      <div class="type-container" *ngIf="gen_infos.types.length">
+        <h3>Types of pokemons were introduced in this generation</h3>
+        <div class="badges">
+          <span
+            *ngFor="let type of gen_infos.types"
+            [ngStyle]="{'background': getColor(type.name)}"
+            [routerLink]="['/type', type.id]">
+            {{ type.name }}
+          </span>
+        </div>
+      </div>
+
+      <div class="move-container">
+        <h3>Moves of pokemons were introduced in this generation</h3>
+        <div class="badges">
+          <span *ngFor="let move of gen_infos.moves" id="moves">{{ move.name }} </span>
+        </div>
+      </div>
+
+      <div class="pokemon-container">
+        <h3>Pokemons were introduced in this generation</h3>
+        <app-pokemon-list [pokemons]="gen_infos.pokemon_species"></app-pokemon-list>
+      </div>
+    </div>
+
+  </div>
+</div>

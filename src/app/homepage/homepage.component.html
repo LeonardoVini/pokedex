@@ -1,4 +1,16 @@
 <div class="content">
-  <header></header>
-  <app-pokemon-list [pokemons]="pokemons"></app-pokemon-list>
+  <header>
+    <a [routerLink]="['/']">Logout</a>
+    <h1>Select a region</h1>
+  </header>
+
+  <div class="pokemon-regions-container">
+    <div class="pokemon-region" *ngFor="let region of pokemon_regions?.results" [routerLink]="['/region', region.id]" >
+      <img [src]="region.map" [alt]="region.name">
+      <div class="region-infos">
+        <h3>{{ region.name | titlecase }} Region</h3>
+      </div>
+    </div>
+  </div>
+  <!-- <app-pokemon-list></app-pokemon-list> -->
 </div>

@@ -1,0 +1,111 @@
+<div class="content" *ngIf="type">
+
+  <h1 id="type-name">{{ type.name | titlecase }} (type)</h1>
+
+  <div class="types-wrapper">
+    <div class="type-container">
+      <h2>Attack pros & cons:</h2>
+      <div class="type-infos">
+
+        <div class="info-container" *ngIf="type.damage_relations.double_damage_to.length">
+          <p>{{ type.name }} moves are super-effective against:</p>
+          <button
+            class="button-type"
+            type="button"
+            *ngFor="let type of type.damage_relations.double_damage_to"
+            [ngStyle]="{'background': getTypeColor(type.name)}"
+            [routerLink]="['/type', type.id]">
+            {{ type.name }}
+          </button>
+        </div>
+
+        <div class="info-container" *ngIf="type.damage_relations.half_damage_to.length">
+          <p>{{ type.name }} moves are not very effective against:</p>
+          <button
+            class="button-type"
+            type="button"
+            *ngFor="let type of type.damage_relations.half_damage_to"
+            [ngStyle]="{'background': getTypeColor(type.name)}"
+            [routerLink]="['/type', type.id]">
+            {{ type.name }}
+          </button>
+        </div>
+
+        <div class="info-container" *ngIf="type.damage_relations.no_damage_to.length">
+          <p>{{ type.name }} moves have no effect on:</p>
+          <button
+            class="button-type"
+            type="button"
+            *ngFor="let type of type.damage_relations.no_damage_to"
+            [ngStyle]="{'background': getTypeColor(type.name)}"
+            [routerLink]="['/type', type.id]">
+            {{ type.name }}
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="type-container">
+      <h2>Defense pros & cons:</h2>
+      <div class="type-infos">
+
+        <div class="info-container" *ngIf="type.damage_relations.double_damage_from.length">
+          <p>These types are super-effective against {{ type.name }} Pokémon:</p>
+          <button
+            class="button-type"
+            type="button"
+            *ngFor="let type of type.damage_relations.double_damage_from"
+            [ngStyle]="{'background': getTypeColor(type.name)}"
+            [routerLink]="['/type', type.id]">
+            {{ type.name }}
+          </button>
+        </div>
+
+        <div class="info-container" *ngIf="type.damage_relations.half_damage_from.length">
+          <p>These types are not very effective against {{ type.name }} Pokémon:</p>
+          <button
+            class="button-type"
+            type="button"
+            *ngFor="let type of type.damage_relations.half_damage_from"
+            [ngStyle]="{'background': getTypeColor(type.name)}"
+            [routerLink]="['/type', type.id]">
+            {{ type.name }}
+          </button>
+        </div>
+
+        <div class="info-container" *ngIf="type.damage_relations.no_damage_from.length">
+          <p>These types have no effect on Dark Pokémon:</p>
+          <button
+            class="button-type"
+            type="button"
+            *ngFor="let type of type.damage_relations.no_damage_from"
+            [ngStyle]="{'background': getTypeColor(type.name)}"
+            [routerLink]="['/type', type.id]">
+            {{ type.name }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="all-pokemon-types">
+    <h1>All Pokémon Types</h1>
+    <div class="pokemon-types">
+      <button
+        class="button-type"
+        type="button"
+        *ngFor="let type of all_types?.results"
+        [ngStyle]="{'background': getTypeColor(type.name)}"
+        [routerLink]="['/type', type.id]">
+        {{ type.name }}
+      </button>
+    </div>
+  </div>
+
+  <div class="pokemons">
+    <h1>{{ type.name | titlecase }} Pokémons</h1>
+    <app-pokemon-list [pokemons]="pokemon_array"></app-pokemon-list>
+  </div>
+
+</div>
