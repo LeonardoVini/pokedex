@@ -9,6 +9,7 @@ import { LoginModule } from './login/login.module';
 import { HomepageModule } from './homepage/homepage.module';
 import { PokemonRegionModule } from './pokemon-region/pokemon-region.module';
 import { PokemonTypeModule } from './pokemon-type/pokemon-type.module';
+import { PokemonPageModule } from './pokemon-page/pokemon-page.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { PokemonTypeModule } from './pokemon-type/pokemon-type.module';
     HomepageModule,
     LoginModule,
     PokemonRegionModule,
-    PokemonTypeModule
+    PokemonTypeModule,
+    PokemonPageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,5 @@
 <div class="pokemon-images">
-  <div class="card-image" *ngFor="let pokemon of pokemons">
+  <div class="card-image" *ngFor="let pokemon of pokemons" [routerLink]="['/pokemon', pokemon.id]">
     <img [src]="pokemon.image" [alt]="pokemon.name">
     <p>{{ pokemon.name }}</p>
   </div>
