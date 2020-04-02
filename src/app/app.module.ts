@@ -23,7 +23,7 @@ import { PokemonPageModule } from './pokemon-page/pokemon-page.module';
     LoginModule,
     PokemonRegionModule,
     PokemonTypeModule,
-    PokemonPageModule
+    PokemonPageModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

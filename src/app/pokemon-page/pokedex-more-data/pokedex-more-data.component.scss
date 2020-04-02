@@ -1,0 +1,23 @@
+div.pokedex-data {
+
+  div.pokemon-infos-container {
+    margin-top: 15px;
+
+    div.pokemon-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 0;
+
+      margin-top: 10px;
+      font-size: 16px;
+      border-bottom: 1px solid rgba(226, 218, 218, 0.938);
+    }
+
+    div.pokemon-info p:first-child {
+      font-weight: bold;
+      font-size: 18px;
+      margin-right: 60px;
+    }
+  }
+}

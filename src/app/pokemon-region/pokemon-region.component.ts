@@ -23,15 +23,21 @@ export class PokemonRegionComponent implements OnInit {
 
   ngOnInit() {
     this.getGenerationID()
-    this.getGenerationInfos()
+    this.routeChangeDetetion()
   }
 
   private getGenerationID(): void {
     this.id = +this.activateRoute.snapshot.params['id']
   }
 
-  private getGenerationInfos(): void {
-    this.pokemonAPIService.getGenerationInfos(this.id).subscribe(
+  private routeChangeDetetion(): void {
+    this.activateRoute.params.subscribe(routeParams => {
+      this.getGenerationInfos(routeParams['id'])
+    })
+  }
+
+  private getGenerationInfos(id: number = this.id): void {
+    this.pokemonAPIService.getGenerationInfos(id).subscribe(
       gen_infos => this.gen_infos = gen_infos,
       err => console.log(err),
       () => {

@@ -1,98 +1,31 @@
-<div class="content" *ngIf="pokemon">
+<app-header></app-header>
 
+<div class="content" *ngIf="pokemon">
   <h1>{{ pokemon.name | titlecase }}</h1>
 
   <div class="pokemon-container">
     <div class="pokemon-images">
-      <img [src]="pokemon.image" [alt]="pokemon.name">
+      <img [src]="pokemon.image" [alt]="pokemon.name" />
     </div>
 
-    <div class="pokedex-data">
-      <h1>Pokédex Data</h1>
+    <div class="pokedex-container">
+      <h2>Pokédex Data</h2>
 
-      <div class="pokemon-infos-container">
-        <div class="pokemon-info">
-          <p>National Nº</p>
-          <p>{{ pokemon.id }}</p>
-        </div>
+      <div class="pokedex-wrapper">
+        <app-pokedex-data
+          [pokemon]="pokemon"
+          [pokemon_species]="pokemon_species"
+        >
+        </app-pokedex-data>
 
-        <div class="pokemon-info">
-          <p>Type<small>(s)</small></p>
-          <div class="pokemon-types">
-            <button
-              class="button-type"
-              type="button"
-              *ngFor="let type of types"
-              [ngStyle]="{'background': getTypeColor(type.name)}"
-              [routerLink]="['/type', type.id]">
-              {{ type.name }}
-            </button>
-          </div>
-        </div>
-
-        <div class="pokemon-info">
-          <p>Species</p>
-          <p>{{ pokemon_species?.genera[2].genus }}</p>
-        </div>
-
-        <div class="pokemon-info">
-          <p>Height</p>
-          <p>{{ pokemon.metres }} m</p>
-        </div>
-
-        <div class="pokemon-info">
-          <p>Weight</p>
-          <p>{{ pokemon.kilograms }} kg ({{ pokemon.lbs }} lbs)</p>
-        </div>
-
-
-        <div class="pokemon-info">
-          <p>Abilities</p>
-          <div class="pokemon-abilities">
-            <span
-              *ngFor="let ability of pokemon.abilities">
-              {{ ability.ability.name }} <small *ngIf="ability.is_hidden">(hidden)</small>
-            </span>
-          </div>
-        </div>
-
-        <div class="pokemon-info">
-          <p>Color</p>
-          <p>{{ pokemon_species?.color.name | titlecase}}</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="pokedex-data">
-      <h1>Pokédex Data</h1>
-
-      <div class="pokemon-infos-container">
-        <div class="pokemon-info">
-          <p>EV yield</p>
-          <p>002</p>
-        </div>
-
-        <div class="pokemon-info">
-          <p>Catch Rate</p>
-          <p>002</p>
-        </div>
-
-        <div class="pokemon-info">
-          <p>Base Friendship</p>
-          <p>002</p>
-        </div>
-
-        <div class="pokemon-info">
-          <p>Base Exp.</p>
-          <p>002</p>
-        </div>
-
-        <div class="pokemon-info">
-          <p>Growth Rate</p>
-          <p>002</p>
-        </div>
+        <app-pokedex-more-data
+          [pokemon]="pokemon"
+          [pokemon_species]="pokemon_species"
+        >
+        </app-pokedex-more-data>
       </div>
     </div>
   </div>
-
 </div>
+
+<app-footer></app-footer>

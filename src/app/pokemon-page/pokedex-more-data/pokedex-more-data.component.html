@@ -1,0 +1,48 @@
+<div class="pokedex-data">
+  <div class="pokemon-infos-container" *ngIf="pokemon_species">
+    <div class="pokemon-info">
+      <p>Catch Rate</p>
+      <p>{{ pokemon_species.capture_rate }}
+        <small>
+          ({{ ((pokemon_species.capture_rate / 255) * 100).toFixed(2) }}% with Pokéball, Full HP)
+        </small>
+      </p>
+    </div>
+
+    <div class="pokemon-info">
+      <p>Base Friendship</p>
+      <p>{{ pokemon_species.base_happiness }} (normal)</p>
+    </div>
+
+    <div class="pokemon-info">
+      <p>Base Exp.</p>
+      <p>{{ pokemon.base_experience }}</p>
+    </div>
+
+    <div class="pokemon-info">
+      <p>Growth Rate</p>
+      <p>{{ pokemon_species.growth_rate.name.split('-').join(' ') | titlecase }}</p>
+    </div>
+
+    <div class="pokemon-info">
+      <p>Egg Groups</p>
+      <p *ngFor="let egg of pokemon_species.egg_groups">
+        {{ egg.name | titlecase }}
+      </p>
+    </div>
+
+    <div class="pokemon-info">
+      <p>Gender</p>
+      <span>{{ pokemon_species.female }}</span>
+      <span>{{ pokemon_species.male }}</span>
+    </div>
+
+    <div class="pokemon-info">
+      <p>Egg Cycles</p>
+      <p>
+        {{ pokemon_species.hatch_counter }}
+        <small>( ~ {{ 255 * (pokemon_species.hatch_counter + 1) }} steps)</small>
+      </p>
+    </div>
+  </div>
+</div>

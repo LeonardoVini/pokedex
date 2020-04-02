@@ -1,0 +1,57 @@
+<header class="header-container">
+
+  <div class="content">
+    <img src="./assets/pokemon.png" alt="pokemon">
+
+    <div class="links-container">
+      <a [routerLink]="['/homepage']">Homepage</a>
+
+      <div class="dropdown">
+        <button class="dropbtn">Regions</button>
+        <div class="dropdown-content">
+          <a [routerLink]="['/region', 1]">Kanto</a>
+          <a [routerLink]="['/region', 2]">Johto</a>
+          <a [routerLink]="['/region', 3]">Hoenn</a>
+          <a [routerLink]="['/region', 4]">Sinnoh</a>
+          <a [routerLink]="['/region', 5]">Unova</a>
+          <a [routerLink]="['/region', 6]">Kalos</a>
+          <a [routerLink]="['/region', 7]">Alola</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn">Types</button>
+        <div class="dropdown-content">
+          <a [routerLink]="['/type', 1]">Normal</a>
+          <a [routerLink]="['/type', 2]">Fighting</a>
+          <a [routerLink]="['/type', 3]">Flying</a>
+          <a [routerLink]="['/type', 4]">Poison</a>
+          <a [routerLink]="['/type', 5]">Ground</a>
+          <a [routerLink]="['/type', 6]">Rock</a>
+          <a [routerLink]="['/type', 7]">Bug</a>
+          <a [routerLink]="['/type', 8]">Ghost</a>
+          <a [routerLink]="['/type', 9]">Steel</a>
+          <a [routerLink]="['/type', 10]">Fire</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn">Pokémons</button>
+        <div class="dropdown-content">
+          <a [routerLink]="['/pokemon', 1]">bulbasaur</a>
+          <a [routerLink]="['/pokemon', 4]">charmander</a>
+          <a [routerLink]="['/pokemon', 7]">squirtle</a>
+          <a [routerLink]="['/pokemon', 10]">caterpie</a>
+          <a [routerLink]="['/pokemon', 16]">pidgey</a>
+          <a [routerLink]="['/pokemon', 25]">pikachu</a>
+          <a [routerLink]="['/pokemon', 37]">vulpix</a>
+          <a [routerLink]="['/pokemon', 151]">mew</a>
+          <a [routerLink]="['/pokemon', 150]">mewtwo</a>
+          <a [routerLink]="['/pokemon', 144]">articuno</a>
+        </div>
+      </div>
+
+      <a [routerLink]="['/']">Logout</a>
+    </div>
+  </div>
+</header>

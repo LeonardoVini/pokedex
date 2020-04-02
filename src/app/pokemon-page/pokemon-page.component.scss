@@ -1,13 +1,34 @@
 .content {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 100vh;
+
+  h1 {
+    margin: 40px auto 20px
+  }
 
   div.pokemon-container {
     display: flex;
     justify-content: space-between;
 
-    margin-top: 20px;
+    padding: 10px;
+
+    div.pokedex-container {
+      display: flex;
+      flex-direction: column;
+
+      h2 {
+        margin: 0 auto;
+      }
+
+      div.pokedex-wrapper {
+        display: flex;
+
+        app-pokedex-data {
+          margin-right: 60px;
+        }
+      }
+    }
   }
 }
 
@@ -19,69 +40,31 @@ div.pokemon-images {
 
   img {
     transition: opacity 0.2s;
+    width: 400px;
 
     &:hover {
-      opacity: 0.8;
-    }
-  }
-}
-
-div.pokedex-data {
-
-  div.pokemon-infos-container {
-    margin-top: 15px;
-
-    div.pokemon-info {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 5px 0;
-
-      margin-top: 10px;
-      font-size: 16px;
-      border-bottom: 1px solid rgba(226, 218, 218, 0.938);
+      animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+      transform: translate3d(0, 0, 0);
+      backface-visibility: hidden;
+      perspective: 1000px;
     }
 
-    div.pokemon-info p:first-child {
-      font-weight: bold;
-      font-size: 18px;
-      margin-right: 60px;
+    @keyframes shake {
+      10%, 90% {
+        transform: translate3d(-1px, 0, 0);
+      }
+
+      20%, 80% {
+        transform: translate3d(2px, 0, 0);
+      }
+
+      30%, 50%, 70% {
+        transform: translate3d(-4px, 0, 0);
+      }
+
+      40%, 60% {
+        transform: translate3d(4px, 0, 0);
+      }
     }
-
-    div.pokemon-abilities {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-    }
-
-    div.pokemon-abilities span + span {
-      margin-top: 5px;
-    }
-  }
-}
-
-div.pokemon-types {
-  display: flex;
-  flex-direction: column;
-}
-
-div.pokemon-types button + button {
-  margin-top: 10px;
-}
-
-button.button-type {
-  display: inline-block;
-  border-radius: 8px;
-  transition: opacity 0.3s;
-  font-size: 12px;
-  font-weight: bold;
-  color: #FFF;
-  padding: 5px;
-  border: 1px solid #000;
-  width: 70px;
-
-  &:hover {
-    cursor: pointer;
-    opacity: 0.8;
   }
 }

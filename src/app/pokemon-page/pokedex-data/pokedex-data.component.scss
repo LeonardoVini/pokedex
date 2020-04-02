@@ -1,0 +1,59 @@
+div.pokedex-data {
+
+  div.pokemon-infos-container {
+    margin-top: 15px;
+
+    div.pokemon-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 0;
+
+      margin-top: 10px;
+      font-size: 16px;
+      border-bottom: 1px solid rgba(226, 218, 218, 0.938);
+    }
+
+    div.pokemon-info p:first-child {
+      font-weight: bold;
+      font-size: 18px;
+      margin-right: 60px;
+    }
+
+    div.pokemon-abilities {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    div.pokemon-abilities span + span {
+      margin-top: 5px;
+    }
+  }
+}
+
+div.pokemon-types {
+  display: flex;
+  flex-direction: column;
+}
+
+div.pokemon-types button + button {
+  margin-top: 10px;
+}
+
+button.button-type {
+  display: inline-block;
+  border-radius: 8px;
+  transition: opacity 0.3s;
+  font-size: 12px;
+  font-weight: bold;
+  color: #FFF;
+  padding: 5px;
+  border: 1px solid #000;
+  width: 70px;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+}

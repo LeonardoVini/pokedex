@@ -15,12 +15,9 @@ export class PokemonPageComponent implements OnInit {
   public pokemon: Pokemon
   public pokemon_species: Pokemon_Species
 
-  public types: Array<{ name: string, id: number }> = []
-
   constructor(
     private pokemonAPIService: PokemonAPIService,
     private activateRoute: ActivatedRoute,
-    private typeColorService: TypeColorService
   ) { }
 
   ngOnInit() {
@@ -41,9 +38,6 @@ export class PokemonPageComponent implements OnInit {
       () => {
         this.modifyPokemonID()
         this.setPokemonImage()
-        this.setTypes()
-        this.setDimension()
-        console.log(this.pokemon)
       }
     )
   }
@@ -52,7 +46,7 @@ export class PokemonPageComponent implements OnInit {
     this.pokemonAPIService.getPokemonSpecies(pokemon_id).subscribe(
       pokemon_species => this.pokemon_species = { ...pokemon_species },
       err => console.log(err),
-      () => console.log(this.pokemon_species)
+      () => this.setGender()
     )
   }
 
@@ -66,22 +60,14 @@ export class PokemonPageComponent implements OnInit {
     this.pokemon.id >= 10 && this.pokemon.id < 100 ? this.pokemon.id = `0${id}` : null
   }
 
-  private setTypes(): void {
-    this.pokemon.types.forEach((v, i, s) => {
-      let name: string = v.type.name
-      let id: number = +v.type.url.split('/')[6]
+  private setGender(): void {
+    let female_rate: number = (this.pokemon_species.gender_rate / 8) * 100
+    let male_rate: number = 100 - female_rate
 
-      this.types.push({ name, id })
-    })
-  }
+    let female: string = `${female_rate}% female`
+    let male: string = `${male_rate}% male`
 
-  public getTypeColor(type: string) {
-    return this.typeColorService.getColor(type)
-  }
-
-  private setDimension(): void {
-    this.pokemon['kilograms'] = (this.pokemon.weight * 0.1).toFixed(1)
-    this.pokemon['lbs'] = (this.pokemon.weight * 0.220462).toFixed(1)
-    this.pokemon['metres'] = (this.pokemon.height * 0.1).toFixed(1)
+    this.pokemon_species['female'] = female
+    this.pokemon_species['male'] = male
   }
 }

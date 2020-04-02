@@ -73,6 +73,8 @@ export interface Pokemon_Species {
   order: number
   pal_park_encounters: Pal_Park_Encounters[]
   shape: NameAndURL
+  male: string
+  female: string
 }
 
 interface Pal_Park_Encounters {

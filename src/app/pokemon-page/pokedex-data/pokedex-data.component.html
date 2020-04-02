@@ -1,0 +1,58 @@
+<div class="pokedex-data">
+  <div class="pokemon-infos-container">
+    <div class="pokemon-info">
+      <p>National Nº</p>
+      <p>{{ pokemon.id }}</p>
+    </div>
+
+    <div class="pokemon-info">
+      <p>Type<small>(s)</small></p>
+      <div class="pokemon-types">
+        <button
+          class="button-type"
+          type="button"
+          *ngFor="let type of types"
+          [ngStyle]="{'background': getTypeColor(type.name)}"
+          [routerLink]="['/type', type.id]">
+          {{ type.name }}
+        </button>
+      </div>
+    </div>
+
+    <div class="pokemon-info">
+      <p>Species</p>
+      <p>{{ pokemon_species?.genera[2].genus }}</p>
+    </div>
+
+    <div class="pokemon-info">
+      <p>Height</p>
+      <p>{{ pokemon.metres }} m</p>
+    </div>
+
+    <div class="pokemon-info">
+      <p>Weight</p>
+      <p>{{ pokemon.kilograms }} kg ({{ pokemon.lbs }} lbs)</p>
+    </div>
+
+
+    <div class="pokemon-info">
+      <p>Abilities</p>
+      <div class="pokemon-abilities">
+        <span
+          *ngFor="let ability of pokemon.abilities">
+          {{ ability.ability.name }} <small *ngIf="ability.is_hidden">(hidden)</small>
+        </span>
+      </div>
+    </div>
+
+    <div class="pokemon-info">
+      <p>Color</p>
+      <p>{{ pokemon_species?.color.name | titlecase}}</p>
+    </div>
+
+    <div class="pokemon-info">
+      <p>Shape</p>
+      <p>{{ pokemon_species?.shape.name | titlecase}}</p>
+    </div>
+  </div>
+</div>

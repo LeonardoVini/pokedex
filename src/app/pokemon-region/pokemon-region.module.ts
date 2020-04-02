@@ -5,6 +5,8 @@ import { RouterModule } from '@angular/router';
 
 import { PokemonRegionComponent } from './pokemon-region.component';
 import { PokemonListModule } from '../components/pokemon-list/pokemon-list.module';
+import { HeaderModule } from '../components/header/header.module';
+import { FooterModule } from '../components/footer/footer.module';
 
 @NgModule({
   declarations: [PokemonRegionComponent],
@@ -12,7 +14,9 @@ import { PokemonListModule } from '../components/pokemon-list/pokemon-list.modul
     CommonModule,
     HttpClientModule,
     RouterModule,
-    PokemonListModule
+    PokemonListModule,
+    HeaderModule,
+    FooterModule
   ],
   exports: [],
 })
