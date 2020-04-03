@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { PokemonType, AllTypes } from './models/pokemon-type.model';
-import { PokemonAPIService } from '../services/pokemon-api.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Data } from '@angular/router';
 import { TypeColorService } from '../services/type-color.service';
 
 @Component({
@@ -12,39 +11,32 @@ import { TypeColorService } from '../services/type-color.service';
 })
 export class PokemonTypeComponent implements OnInit {
 
-  private id: number
   public type: PokemonType
   public all_types: AllTypes
   public pokemon_array: Array<{ name: string, url: string, id?: number }> = []
 
   constructor(
-    private pokemonAPIService: PokemonAPIService,
     private activatedRoute: ActivatedRoute,
     private typeColorService: TypeColorService
   ) { }
 
   ngOnInit() {
     this.getTypeID()
-    this.routeChangeDetection()
-    this.getAllTypes()
+    this.getAllTypeID()
   }
 
   private getTypeID(): void {
-    this.id = +this.activatedRoute.snapshot.params['id']
-  }
-
-  private routeChangeDetection(): void {
-    this.activatedRoute.params.subscribe(routeParams => {
-      this.getTypeByID(routeParams['id'])
+    this.activatedRoute.data.subscribe((data: Data) => {
+      this.type = data['type']
+      this.setTypeID()
     })
   }
 
-  private getTypeByID(id: number = this.id): void {
-    this.pokemonAPIService.getTypeByID(id).subscribe(
-      type => this.type = type,
-      err => console.log(err),
-      () => this.setTypeID()
-    )
+  private getAllTypeID(): void {
+    this.activatedRoute.data.subscribe((data: Data) => {
+      this.all_types = data['allType']
+      this.setAllTypesID()
+    })
   }
 
   private setTypeID(): void {
@@ -70,14 +62,6 @@ export class PokemonTypeComponent implements OnInit {
 
   public getTypeColor(type): string {
     return this.typeColorService.getColor(type)
-  }
-
-  private getAllTypes(): void {
-    this.pokemonAPIService.getAllTypes().subscribe(
-      response => this.all_types = response,
-      err => console.log(err),
-      () => this.setAllTypesID()
-    )
   }
 
   private setAllTypesID(): void {

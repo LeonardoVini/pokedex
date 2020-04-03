@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Data } from '@angular/router';
 
 import { PokemonAPIService } from '../services/pokemon-api.service';
 import { Pokemon_Generation } from './models/pokemon_generation.model';
@@ -12,35 +12,22 @@ import { TypeColorService } from '../services/type-color.service';
 })
 export class PokemonRegionComponent implements OnInit {
 
-  private id: number = 0
   public gen_infos: Pokemon_Generation
 
   constructor(
     private activateRoute: ActivatedRoute,
-    private pokemonAPIService: PokemonAPIService,
     private typeColorService: TypeColorService
   ) { }
 
   ngOnInit() {
-    this.getGenerationID()
-    this.routeChangeDetetion()
+    this.getGenerationInfos()
+
   }
 
-  private getGenerationID(): void {
-    this.id = +this.activateRoute.snapshot.params['id']
-  }
-
-  private routeChangeDetetion(): void {
-    this.activateRoute.params.subscribe(routeParams => {
-      this.getGenerationInfos(routeParams['id'])
-    })
-  }
-
-  private getGenerationInfos(id: number = this.id): void {
-    this.pokemonAPIService.getGenerationInfos(id).subscribe(
-      gen_infos => this.gen_infos = gen_infos,
-      err => console.log(err),
-      () => {
+  private getGenerationInfos(): void {
+    this.activateRoute.data.subscribe(
+      (data: Data) => {
+        this.gen_infos = data['region']
         this.setTypeID()
         this.sortGenerationInfos()
       }
